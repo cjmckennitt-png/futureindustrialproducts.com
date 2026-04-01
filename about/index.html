@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Us — Future Industrial Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#080808;--dark:#111111;--surface:#1a1a1a;--surface2:#222222;--border:#2e2e2e;--grey:#888;--light:#cccccc;--white:#f5f5f5;--red:#cc1111;--red-bright:#e01414;--radius:4px}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo img{height:56px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--light);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:var(--radius);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-cta{background:var(--red)!important;color:var(--white)!important;padding:10px 22px!important;margin-left:8px}
+.nav-cta:hover{background:var(--red-bright)!important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:200}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.page-header{position:relative;padding:clamp(140px,14vw,200px) clamp(20px,5vw,64px) clamp(60px,7vw,100px);overflow:hidden;border-bottom:1px solid var(--border)}
+.page-header-bg{position:absolute;inset:0;z-index:0}
+.page-header-bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:.15}
+.page-header-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto}
+.page-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.page-h1{font-size:clamp(36px,5vw,68px);font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:16px}
+.page-sub{font-size:17px;color:var(--light);font-weight:300;max-width:560px;line-height:1.7}
+.section{padding:clamp(60px,8vw,120px) clamp(20px,5vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.section-h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-.02em;line-height:1.08;margin-bottom:16px}
+.red-rule{width:48px;height:3px;background:var(--red);margin-bottom:24px}
+/* Two-col layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.col-img{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3}
+.col-img img{width:100%;height:100%;object-fit:cover;display:block}
+.col-img::after{content:'';position:absolute;inset:0;border:1px solid var(--border);pointer-events:none;border-radius:var(--radius)}
+.col-text p{color:var(--light);font-size:16px;line-height:1.8;margin-bottom:16px;font-weight:300}
+/* Values grid */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.value-card{background:var(--surface);padding:40px 32px;position:relative}
+.value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+.value-card .v-num{font-size:48px;font-weight:900;color:var(--border);line-height:1;margin-bottom:16px}
+.value-card h3{font-size:20px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em}
+.value-card p{color:var(--grey);font-size:14px;line-height:1.7;font-weight:300}
+/* Industries */
+.industries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+.industry-card{background:var(--surface);padding:32px 24px;text-align:center;transition:background .2s}
+.industry-card:hover{background:var(--surface2)}
+.industry-card .icon{font-size:32px;margin-bottom:12px}
+.industry-card h4{font-size:14px;font-weight:700;letter-spacing:.04em}
+.industry-card p{font-size:13px;color:var(--grey);margin-top:6px;font-weight:300}
+/* Women section */
+.women-section{background:var(--dark);border-top:1px solid var(--border)}
+/* Footer */
+footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(40px,6vw,80px) clamp(20px,5vw,64px) 32px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand img{height:48px;width:auto;margin-bottom:16px}
+.footer-brand p{color:var(--grey);font-size:14px;line-height:1.7;font-weight:300}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white);margin-bottom:16px}
+.footer-col a{display:block;color:var(--grey);text-decoration:none;font-size:14px;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--red)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:var(--grey)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:var(--white);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 32px;border-radius:var(--radius);transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--red-bright);transform:translateY(-1px)}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:40px}.values-grid{grid-template-columns:1fr 1fr}.industries-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){nav{height:64px;padding:0 20px}.nav-logo img{height:44px}.nav-toggle{display:flex}.nav-links{display:none;flex-direction:column;gap:0;position:fixed;top:64px;left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border);z-index:150;padding:8px 0 20px}.nav-links.open{display:flex}.nav-links a{padding:14px 24px;font-size:14px;border-bottom:1px solid var(--border);letter-spacing:0;text-transform:none}.nav-cta{margin:12px 16px 0!important;text-align:center}.values-grid{grid-template-columns:1fr}.industries-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="/images/logo.jpeg" alt="Future Industrial Products"></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about/" class="active">About</a>
+    <a href="/products/">Products</a>
+    <a href="/testimonials/">Testimonials</a>
+    <a href="/pay/" class="nav-cta">Pay Invoice</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-bg"><img src="/images/warehouse.jpg" alt=""></div>
+  <div class="page-header-inner">
+    <div class="page-label">About Us</div>
+    <h1 class="page-h1">Built on Performance.<br>Driven by Purpose.</h1>
+    <p class="page-sub">A woman-owned industrial supply company delivering professional-grade solutions to facilities nationwide since day one.</p>
+  </div>
+</div>
+
+<!-- OUR STORY -->
+<section class="section">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="col-text reveal">
+        <div class="section-label">Our Story</div>
+        <div class="red-rule"></div>
+        <h2 class="section-h2">Why We Started</h2>
+        <p>Future Industrial Products was founded on a simple belief: facilities deserve better products at better prices, backed by a team that actually picks up the phone.</p>
+        <p>We saw an industry full of overpriced, underperforming products and a customer base that deserved more. So we built something different — concentrated formulas that stretch facility budgets without cutting corners on performance.</p>
+        <p>Today, we supply warehouses, manufacturing plants, food processing facilities, and commercial buildings across all 50 states.</p>
+      </div>
+      <div class="col-img reveal">
+        <img src="/images/logistics.jpg" alt="Industrial operations">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">What We Stand For</div>
+      <h2 class="section-h2">Our Core Values</h2>
+    </div>
+    <div class="values-grid reveal">
+      <div class="value-card">
+        <div class="v-num">01</div>
+        <h3>Performance First</h3>
+        <p>Every formula is engineered to outperform the competition at the job site level. We test in the field, not in the lab.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-num">02</div>
+        <h3>Honest Pricing</h3>
+        <p>Concentrated formulas mean you get more product for less cost. We pass the savings directly to facilities — no markup games.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-num">03</div>
+        <h3>Reliable Service</h3>
+        <p>When you call, someone answers. When you order, it ships. We operate the way businesses used to — with accountability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WOMEN-OWNED -->
+<section class="section women-section">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="col-img reveal">
+        <img src="/images/women.jpg" alt="Woman-owned business">
+      </div>
+      <div class="col-text reveal">
+        <div class="section-label">Woman-Owned &amp; Operated</div>
+        <div class="red-rule"></div>
+        <h2 class="section-h2">Leadership That Leads by Example</h2>
+        <p>Future Industrial Products is proudly woman-owned and operated. Our leadership is driven by a commitment to excellence, integrity, and building a workforce that reflects the diversity of the industries we serve.</p>
+        <p>We believe the best companies are built by the best people — regardless of background. That belief shows up in how we hire, how we operate, and how we treat every customer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Industries We Serve</div>
+      <h2 class="section-h2">Built for Every Facility Type</h2>
+    </div>
+    <div class="industries-grid reveal">
+      <div class="industry-card">
+        <div class="icon">🏭</div>
+        <h4>Manufacturing</h4>
+        <p>Production floors, machinery, and heavy equipment</p>
+      </div>
+      <div class="industry-card">
+        <div class="icon">📦</div>
+        <h4>Warehousing</h4>
+        <p>Distribution centers and logistics operations</p>
+      </div>
+      <div class="industry-card">
+        <div class="icon">🍽️</div>
+        <h4>Food Processing</h4>
+        <p>Food-safe formulas that pass compliance audits</p>
+      </div>
+      <div class="industry-card">
+        <div class="icon">🏥</div>
+        <h4>Healthcare</h4>
+        <p>Hospital-grade cleaning for medical facilities</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="/images/logo.jpeg" alt="Future Industrial Products">
+      <p>Industrial cleaning solutions engineered for performance, delivered nationwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/products/">Max 20 Concentrate</a>
+      <a href="/products/">Max 25 Degreaser</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about/">About Us</a>
+      <a href="/testimonials/">Testimonials</a>
+      <a href="/pay/">Pay Invoice</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+18005871894">800-587-1894</a>
+      <a>Mon–Fri 8:30am–4pm EST</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Future Industrial Products. All Rights Reserved.</span>
+    <span>Proudly Woman-Owned &amp; Made in USA</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

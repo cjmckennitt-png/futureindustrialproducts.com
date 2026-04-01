@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Testimonials — Future Industrial Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#080808;--dark:#111111;--surface:#1a1a1a;--surface2:#222222;--border:#2e2e2e;--grey:#888;--light:#cccccc;--white:#f5f5f5;--red:#cc1111;--red-bright:#e01414;--radius:4px}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo img{height:56px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--light);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:var(--radius);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-cta{background:var(--red)!important;color:var(--white)!important;padding:10px 22px!important;margin-left:8px}
+.nav-cta:hover{background:var(--red-bright)!important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:200}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Page Header */
+.page-header{position:relative;padding:clamp(140px,14vw,200px) clamp(20px,5vw,64px) clamp(60px,7vw,100px);overflow:hidden;border-bottom:1px solid var(--border)}
+.page-header-bg{position:absolute;inset:0;z-index:0}
+.page-header-bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:.15}
+.page-header-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto}
+.page-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.page-h1{font-size:clamp(36px,5vw,68px);font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:16px}
+.page-sub{font-size:17px;color:var(--light);font-weight:300;max-width:560px;line-height:1.7}
+/* Sections */
+.section{padding:clamp(60px,8vw,120px) clamp(20px,5vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.section-h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-.02em;line-height:1.08;margin-bottom:40px}
+/* Featured quote */
+.featured-quote{background:var(--dark);border:1px solid var(--border);border-left:4px solid var(--red);padding:48px 56px;margin-bottom:2px;position:relative}
+.featured-quote .q-mark{font-size:80px;font-weight:900;color:var(--red);opacity:.2;line-height:.8;position:absolute;top:32px;left:52px;font-family:Georgia,serif}
+.featured-quote blockquote{font-size:clamp(18px,2.5vw,26px);font-weight:300;line-height:1.6;color:var(--white);margin-bottom:24px;position:relative;z-index:1}
+.featured-quote .attr{display:flex;align-items:center;gap:16px}
+.featured-quote .attr-line{width:32px;height:2px;background:var(--red)}
+.featured-quote .attr-name{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.featured-quote .attr-role{font-size:13px;color:var(--grey);font-weight:300}
+/* Testimonials grid */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.t-card{background:var(--surface);padding:36px 32px;position:relative}
+.t-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+.t-card .stars{color:var(--red);font-size:14px;letter-spacing:2px;margin-bottom:16px}
+.t-card blockquote{font-size:15px;color:var(--light);line-height:1.75;font-weight:300;margin-bottom:24px;font-style:italic}
+.t-card .t-name{font-size:13px;font-weight:700;color:var(--white)}
+.t-card .t-company{font-size:12px;color:var(--grey);font-weight:300;margin-top:2px}
+.t-card .t-industry{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);background:rgba(204,17,17,.08);padding:4px 10px;border-radius:2px;margin-top:10px}
+/* Stats strip */
+.stats-strip{background:var(--red);padding:64px clamp(20px,5vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stat-item .s-num{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-.03em;line-height:1}
+.stat-item .s-label{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-top:6px;opacity:.8}
+/* Industries grid */
+.industries-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+.ind-card{background:var(--surface);padding:32px 24px;text-align:center}
+.ind-card .icon{font-size:28px;margin-bottom:10px}
+.ind-card h4{font-size:13px;font-weight:700;letter-spacing:.04em;margin-bottom:6px}
+.ind-card p{font-size:12px;color:var(--grey);font-weight:300}
+/* CTA Band */
+.cta-band{background:var(--dark);border-top:1px solid var(--border);padding:80px clamp(20px,5vw,64px);text-align:center}
+.cta-band .section-label{justify-content:center;display:block}
+.cta-band h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-.02em;margin-bottom:12px}
+.cta-band p{color:var(--light);font-size:16px;margin-bottom:32px;font-weight:300}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:var(--white);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 32px;border-radius:var(--radius);transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--red-bright);transform:translateY(-1px)}
+/* Footer */
+footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(40px,6vw,80px) clamp(20px,5vw,64px) 32px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand img{height:48px;width:auto;margin-bottom:16px}
+.footer-brand p{color:var(--grey);font-size:14px;line-height:1.7;font-weight:300}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white);margin-bottom:16px}
+.footer-col a{display:block;color:var(--grey);text-decoration:none;font-size:14px;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--red)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:var(--grey)}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr 1fr}.stats-inner{grid-template-columns:1fr 1fr;gap:24px}.industries-row{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){nav{height:64px;padding:0 20px}.nav-logo img{height:44px}.nav-toggle{display:flex}.nav-links{display:none;flex-direction:column;gap:0;position:fixed;top:64px;left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border);z-index:150;padding:8px 0 20px}.nav-links.open{display:flex}.nav-links a{padding:14px 24px;font-size:14px;border-bottom:1px solid var(--border);letter-spacing:0;text-transform:none}.nav-cta{margin:12px 16px 0!important;text-align:center}.testimonials-grid{grid-template-columns:1fr}.featured-quote{padding:32px 28px}.featured-quote .q-mark{left:24px;top:20px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="/images/logo.jpeg" alt="Future Industrial Products"></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/products/">Products</a>
+    <a href="/testimonials/" class="active">Testimonials</a>
+    <a href="/pay/" class="nav-cta">Pay Invoice</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-bg"><img src="/images/logistics.jpg" alt=""></div>
+  <div class="page-header-inner">
+    <div class="page-label">Testimonials</div>
+    <h1 class="page-h1">Trusted by Facilities<br>Across the Country.</h1>
+    <p class="page-sub">From single-location warehouses to multi-site manufacturing operations, facilities nationwide rely on Future Industrial to keep their operations running clean.</p>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="s-num">500+</div>
+      <div class="s-label">Facilities Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-num">50</div>
+      <div class="s-label">States Nationwide</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-num">10+</div>
+      <div class="s-label">Years in Business</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-num">100%</div>
+      <div class="s-label">Woman-Owned</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED QUOTE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Featured Review</div>
+      <h2 class="section-h2">What Our Customers Say</h2>
+    </div>
+    <div class="featured-quote reveal">
+      <div class="q-mark">"</div>
+      <blockquote>We switched to Future Industrial's Max 25 Degreaser across three of our production facilities and the results were immediate. The product works harder, dilutes further, and our team hasn't had to double-clean a surface since. The cost savings in the first quarter alone justified the switch ten times over.</blockquote>
+      <div class="attr">
+        <div class="attr-line"></div>
+        <div>
+          <div class="attr-name">James R.</div>
+          <div class="attr-role">Facilities Director — Midwest Manufacturing Co.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid reveal">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The Max 20 has completely replaced three separate products we were using before. One concentrate, one product to order, one less thing to manage. Our supply closet is half the size it used to be."</blockquote>
+        <div class="t-name">Maria T.</div>
+        <div class="t-company">Operations Manager</div>
+        <div class="t-industry">Food Processing</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"What sets Future Industrial apart is the service. I called with a question about dilution ratios for a specific application — someone picked up and walked me through it in two minutes. That's rare."</blockquote>
+        <div class="t-name">Kevin S.</div>
+        <div class="t-company">Maintenance Supervisor</div>
+        <div class="t-industry">Warehousing</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"We run a food-safe facility and compliance is everything. The Max 25 passed every audit we've had this year. Product performs, documentation is clean, and reorders ship fast. No complaints."</blockquote>
+        <div class="t-name">Sandra K.</div>
+        <div class="t-company">Quality Assurance Lead</div>
+        <div class="t-industry">Food Processing</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"We manage 12 properties and needed a standardized cleaning solution we could count on. Future Industrial handles all 12 sites with one SKU. Pricing is straightforward, product is consistent."</blockquote>
+        <div class="t-name">David M.</div>
+        <div class="t-company">Property Manager</div>
+        <div class="t-industry">Commercial Facilities</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Our janitorial team noticed the difference in the first week. The Max 20 cuts through buildup on our production floor faster than anything we've used. And the smell is clean without being overwhelming."</blockquote>
+        <div class="t-name">Lisa P.</div>
+        <div class="t-company">Plant Manager</div>
+        <div class="t-industry">Manufacturing</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"As a woman-owned business ourselves, we love supporting Future Industrial. But beyond that — the product is simply better. We've cut our cleaning supply spend by 30% without any reduction in results."</blockquote>
+        <div class="t-name">Angela B.</div>
+        <div class="t-company">Owner</div>
+        <div class="t-industry">Healthcare Facility</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Industries We Serve</div>
+      <h2 class="section-h2">Proven Across Every Facility Type</h2>
+    </div>
+    <div class="industries-row reveal">
+      <div class="ind-card">
+        <div class="icon">🏭</div>
+        <h4>Manufacturing</h4>
+        <p>Production floors, machinery, heavy equipment</p>
+      </div>
+      <div class="ind-card">
+        <div class="icon">📦</div>
+        <h4>Warehousing</h4>
+        <p>Distribution centers and logistics operations</p>
+      </div>
+      <div class="ind-card">
+        <div class="icon">🍽️</div>
+        <h4>Food Processing</h4>
+        <p>Food-safe formulas that pass compliance audits</p>
+      </div>
+      <div class="ind-card">
+        <div class="icon">🏥</div>
+        <h4>Healthcare</h4>
+        <p>Hospital-grade cleaning for medical facilities</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="section-label">Get Started</div>
+  <h2>Ready to Try It Yourself?</h2>
+  <p>Call us and we'll recommend the right product and dilution for your specific facility needs.</p>
+  <a href="tel:+18005871894" class="btn-primary">Call 800-587-1894 &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="/images/logo.jpeg" alt="Future Industrial Products">
+      <p>Industrial cleaning solutions engineered for performance, delivered nationwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/products/">Max 20 Concentrate</a>
+      <a href="/products/">Max 25 Degreaser</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about/">About Us</a>
+      <a href="/testimonials/">Testimonials</a>
+      <a href="/pay/">Pay Invoice</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+18005871894">800-587-1894</a>
+      <a>Mon–Fri 8:30am–4pm EST</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Future Industrial Products. All Rights Reserved.</span>
+    <span>Proudly Woman-Owned &amp; Made in USA</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
