@@ -5,10 +5,15 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <title>About Us — Future Industrial Products</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--black:#080808;--dark:#111111;--surface:#1a1a1a;--surface2:#222222;--border:#2e2e2e;--grey:#888;--light:#cccccc;--white:#f5f5f5;--red:#cc1111;--red-bright:#e01414;--radius:4px}
 html{scroll-behavior:smooth}
@@ -70,13 +75,27 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 .footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:var(--grey)}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:var(--white);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 32px;border-radius:var(--radius);transition:background .2s,transform .15s}
 .btn-primary:hover{background:var(--red-bright);transform:translateY(-1px)}
-@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:40px}.values-grid{grid-template-columns:1fr 1fr}.industries-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:768px){nav{height:64px;padding:0 20px}.nav-logo img{height:44px}.nav-toggle{display:flex}.nav-links{display:none;flex-direction:column;gap:0;position:fixed;top:64px;left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border);z-index:150;padding:8px 0 20px}.nav-links.open{display:flex}.nav-links a{padding:14px 24px;font-size:14px;border-bottom:1px solid var(--border);letter-spacing:0;text-transform:none}.nav-cta{margin:12px 16px 0!important;text-align:center}.values-grid{grid-template-columns:1fr}.industries-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:none}
 
-/* ── MOBILE OVERHAUL ── */
+/* ─────────────────────────────────────────
+   RESPONSIVE — consolidated, mobile-first
+───────────────────────────────────────── */
+
+/* Tablet (≤900px) */
+@media(max-width:900px){
+  .products-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  /* Products page */
+  .product-row{grid-template-columns:1fr;min-height:auto}
+  .product-row.reverse{direction:ltr}
+  .prod-img-panel{padding:48px 32px;min-height:300px}
+  .why-grid{grid-template-columns:1fr 1fr}
+}
+
+/* Mobile (≤768px) — nav + layout */
 @media(max-width:768px){
+  /* Nav */
   nav{height:64px;padding:0 18px}
   .nav-logo img{height:52px}
   .nav-toggle{display:flex;padding:10px;margin-right:-10px}
@@ -96,23 +115,42 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   }
   .nav-links a.active{color:var(--red)}
   .nav-cta{
-    margin:16px 16px 0!important;
-    padding:18px 24px!important;
+    margin:16px 16px 0!important;padding:18px 24px!important;
     border-radius:var(--radius)!important;
-    justify-content:center;
-    border-bottom:none!important;
-    font-size:15px!important
+    justify-content:center;border-bottom:none!important;font-size:15px!important
   }
+  /* Inner page headers */
+  .page-header{padding-top:88px!important;padding-bottom:48px!important}
+  /* Products page rows */
+  .prod-img-panel{min-height:260px;padding:40px 24px}
+  .prod-content{padding:40px 24px!important}
+  .why-grid{grid-template-columns:1fr}
+  /* Home: hero buttons stack */
+  .hero-btns{flex-direction:column;align-items:flex-start}
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
 }
+
+/* Small phones (≤480px) */
 @media(max-width:480px){
-  .page-h1,.hero-h1{font-size:clamp(32px,10vw,48px)}
+  .page-h1,.hero-h1{font-size:clamp(28px,9vw,42px)}
   .btn-primary,.btn-outline,.btn-red,.btn-teal,.btn-white,.btn-dark{
     width:100%;justify-content:center;padding:18px 24px
   }
   .hero-btns{flex-direction:column;width:100%}
   .stats-inner{grid-template-columns:1fr 1fr}
-  .stat-item .s-num{font-size:36px}
+  .stat-item .num{font-size:30px}
+  .prod-name{font-size:38px!important}
+  .pods-badge{flex-direction:column;gap:4px;text-align:center}
+  .section-h2{font-size:clamp(24px,7vw,36px)}
+  .product-card{padding:32px 24px}
+  .footer-brand img:first-child{height:56px}
 }
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
 
 </style>
 </head>
