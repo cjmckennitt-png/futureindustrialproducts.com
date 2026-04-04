@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About Us — Future Industrial Products</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,6 +74,46 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 @media(max-width:768px){nav{height:64px;padding:0 20px}.nav-logo img{height:44px}.nav-toggle{display:flex}.nav-links{display:none;flex-direction:column;gap:0;position:fixed;top:64px;left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border);z-index:150;padding:8px 0 20px}.nav-links.open{display:flex}.nav-links a{padding:14px 24px;font-size:14px;border-bottom:1px solid var(--border);letter-spacing:0;text-transform:none}.nav-cta{margin:12px 16px 0!important;text-align:center}.values-grid{grid-template-columns:1fr}.industries-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
+
+/* ── MOBILE OVERHAUL ── */
+@media(max-width:768px){
+  nav{height:64px;padding:0 18px}
+  .nav-logo img{height:52px}
+  .nav-toggle{display:flex;padding:10px;margin-right:-10px}
+  .nav-links{
+    display:none;flex-direction:column;gap:0;
+    position:fixed;top:64px;left:0;right:0;bottom:0;
+    background:rgba(8,8,8,.98);backdrop-filter:blur(20px);
+    z-index:150;padding:8px 0 40px;overflow-y:auto;
+    border-top:1px solid var(--border)
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{
+    padding:18px 24px;font-size:16px;font-weight:600;
+    border-bottom:1px solid var(--border);
+    letter-spacing:.02em;text-transform:none;
+    min-height:56px;display:flex;align-items:center
+  }
+  .nav-links a.active{color:var(--red)}
+  .nav-cta{
+    margin:16px 16px 0!important;
+    padding:18px 24px!important;
+    border-radius:var(--radius)!important;
+    justify-content:center;
+    border-bottom:none!important;
+    font-size:15px!important
+  }
+}
+@media(max-width:480px){
+  .page-h1,.hero-h1{font-size:clamp(32px,10vw,48px)}
+  .btn-primary,.btn-outline,.btn-red,.btn-teal,.btn-white,.btn-dark{
+    width:100%;justify-content:center;padding:18px 24px
+  }
+  .hero-btns{flex-direction:column;width:100%}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stat-item .s-num{font-size:36px}
+}
+
 </style>
 </head>
 <body>
@@ -85,7 +127,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
     <a href="/testimonials/">Testimonials</a>
     <a href="/pay/" class="nav-cta">Pay Invoice</a>
   </div>
-  <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open');this.classList.toggle('open')">
+  <button class="nav-toggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -231,6 +273,31 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
 }),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script>
+// Nav toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+if(navToggle && navLinks){
+  navToggle.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+    this.classList.toggle('open');
+  });
+  // Close menu when a link is tapped
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    });
+  });
+  // Close on outside tap
+  document.addEventListener('click', e => {
+    if(!navToggle.contains(e.target) && !navLinks.contains(e.target)){
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    }
+  });
+}
 </script>
 </body>
 </html>
