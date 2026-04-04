@@ -13,8 +13,8 @@
 :root{--black:#080808;--dark:#111111;--surface:#1a1a1a;--surface2:#222222;--border:#2e2e2e;--grey:#888;--light:#cccccc;--white:#f5f5f5;--red:#cc1111;--red-bright:#e01414;--radius:4px}
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo img{height:90px;width:auto;display:block}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo img{height:180px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links a{color:var(--light);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:var(--radius);transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
@@ -25,7 +25,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:80px;display:flex;ali
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.page-header{position:relative;padding:clamp(140px,14vw,200px) clamp(20px,5vw,64px) clamp(60px,7vw,100px);overflow:hidden;border-bottom:1px solid var(--border)}
+.page-header{position:relative;padding:clamp(220px,16vw,260px) clamp(20px,5vw,64px) clamp(60px,7vw,100px);overflow:hidden;border-bottom:1px solid var(--border)}
 .page-header-bg{position:absolute;inset:0;z-index:0}
 .page-header-bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:.15}
 .page-header-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto}
