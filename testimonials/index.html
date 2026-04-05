@@ -9,6 +9,13 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="description" content="Customer testimonials for Future Industrial Products — hear what industrial facility managers say about 1 Shot Cleaner and 1 Shot Degreaser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://futureindustrialproducts.com/testimonials/">
+<meta property="og:title" content="Testimonials — Future Industrial Products">
+<meta property="og:site_name" content="Future Industrial Products">
+<meta property="og:description" content="Hear what customers say about Future Industrial Products cleaning solutions.">
+<meta name="robots" content="index, follow">
 <title>Testimonials — Future Industrial Products</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -114,24 +121,29 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   .nav-links{
     display:none;flex-direction:column;gap:0;
     position:fixed;top:64px;left:0;right:0;
-    background:rgba(8,8,8,.98);backdrop-filter:blur(20px);
-    z-index:150;
+    background:rgba(8,8,8,.99);
+    z-index:9999;
     border-bottom:2px solid var(--border);
-    box-shadow:0 8px 32px rgba(0,0,0,.6)
+    box-shadow:0 8px 32px rgba(0,0,0,.8)
   }
   .nav-links.open{display:flex}
   .nav-links a{
-    padding:18px 24px;font-size:16px;font-weight:600;
+    padding:20px 24px;font-size:17px;font-weight:600;
     border-bottom:1px solid var(--border);
     letter-spacing:.02em;text-transform:none;
-    min-height:56px;display:flex;align-items:center
+    min-height:60px;display:flex;align-items:center;
+    color:var(--light);text-decoration:none
   }
+  .nav-links a:active{background:rgba(255,255,255,.05)}
   .nav-links a.active{color:var(--red)}
   .nav-cta{
-    margin:16px 16px 0!important;padding:18px 24px!important;
-    border-radius:var(--radius)!important;
-    justify-content:center;border-bottom:none!important;font-size:15px!important
+    background:var(--red)!important;color:var(--white)!important;
+    margin:0!important;padding:20px 24px!important;
+    border-radius:0!important;border-bottom:none!important;
+    font-size:17px!important;font-weight:700!important;
+    justify-content:flex-start!important
   }
+  .nav-cta:hover,.nav-cta:active{background:var(--red-bright)!important}
   /* Inner page headers */
   .page-header{padding-top:88px!important;padding-bottom:48px!important}
   /* Products page rows */
@@ -329,8 +341,8 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
     </div>
     <div class="footer-col">
       <h4>Products</h4>
-      <a href="/products/">Max 20 Concentrate</a>
-      <a href="/products/">Max 25 Degreaser</a>
+      <a href="/products/">1 Shot Cleaner</a>
+      <a href="/products/">1 Shot Degreaser</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
@@ -362,23 +374,27 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 // Nav toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
+function closeNav(){
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  document.body.style.overflow='';
+}
+function openNav(){
+  navLinks.classList.add('open');
+  navToggle.classList.add('open');
+  document.body.style.overflow='hidden';
+}
 if(navToggle && navLinks){
-  navToggle.addEventListener('click', function(){
-    navLinks.classList.toggle('open');
-    this.classList.toggle('open');
+  navToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    navLinks.classList.contains('open') ? closeNav() : openNav();
   });
-  // Close menu when a link is tapped
   navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.classList.remove('open');
-    });
+    a.addEventListener('click', closeNav);
   });
-  // Close on outside tap
   document.addEventListener('click', e => {
     if(!navToggle.contains(e.target) && !navLinks.contains(e.target)){
-      navLinks.classList.remove('open');
-      navToggle.classList.remove('open');
+      closeNav();
     }
   });
 }
