@@ -63,12 +63,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;al
 .value-card h3{font-size:20px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em}
 .value-card p{color:var(--grey);font-size:14px;line-height:1.7;font-weight:300}
 /* Industries */
-.industries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
-.industry-card{background:var(--surface);padding:32px 24px;text-align:center;transition:background .2s}
+.industries-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.industry-card{background:var(--surface);overflow:hidden;text-align:center;transition:background .2s;position:relative}
 .industry-card:hover{background:var(--surface2)}
-.industry-card .icon{font-size:32px;margin-bottom:12px}
-.industry-card h4{font-size:14px;font-weight:700;letter-spacing:.04em}
-.industry-card p{font-size:13px;color:var(--grey);margin-top:6px;font-weight:300}
+.ind-img-wrap{position:relative;width:100%;height:200px;overflow:hidden}
+.ind-img-wrap img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  -webkit-mask-image:radial-gradient(ellipse 95% 90% at center,black 25%,transparent 72%);
+  mask-image:radial-gradient(ellipse 95% 90% at center,black 25%,transparent 72%)
+}
+.ind-text{padding:4px 24px 28px}
+.industry-card h4{font-size:15px;font-weight:700;letter-spacing:.04em;margin-bottom:6px}
+.industry-card p{font-size:13px;color:var(--grey);font-weight:300;line-height:1.6}
+@media(max-width:768px){.industries-grid{grid-template-columns:1fr}}
 /* Women section */
 .women-section{background:var(--dark);border-top:1px solid var(--border)}
 /* Footer */
@@ -265,24 +272,31 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
     </div>
     <div class="industries-grid reveal">
       <div class="industry-card">
-        <div class="icon">🏭</div>
-        <h4>Manufacturing</h4>
-        <p>Production floors, machinery, and heavy equipment</p>
+        <div class="ind-img-wrap">
+          <img src="/images/ind-manufacturing.jpg" alt="Manufacturing">
+        </div>
+        <div class="ind-text">
+          <h4>Manufacturing</h4>
+          <p>Production floors, machinery, and heavy equipment</p>
+        </div>
       </div>
       <div class="industry-card">
-        <div class="icon">📦</div>
-        <h4>Warehousing</h4>
-        <p>Distribution centers and logistics operations</p>
+        <div class="ind-img-wrap">
+          <img src="/images/ind-warehousing.jpg" alt="Warehousing">
+        </div>
+        <div class="ind-text">
+          <h4>Warehousing &amp; Distribution</h4>
+          <p>Distribution centers and logistics operations</p>
+        </div>
       </div>
       <div class="industry-card">
-        <div class="icon">🍽️</div>
-        <h4>Food Processing</h4>
-        <p>Food-safe formulas that pass compliance audits</p>
-      </div>
-      <div class="industry-card">
-        <div class="icon">🏥</div>
-        <h4>Healthcare</h4>
-        <p>Hospital-grade cleaning for medical facilities</p>
+        <div class="ind-img-wrap">
+          <img src="/images/ind-commercial.jpg" alt="Commercial Facilities">
+        </div>
+        <div class="ind-text">
+          <h4>Commercial Facilities</h4>
+          <p>Office buildings, hotels, and commercial operations</p>
+        </div>
       </div>
     </div>
   </div>
