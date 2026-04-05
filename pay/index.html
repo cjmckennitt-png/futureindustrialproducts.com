@@ -83,10 +83,11 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   .nav-toggle{display:flex;padding:10px;margin-right:-10px}
   .nav-links{
     display:none;flex-direction:column;gap:0;
-    position:fixed;top:64px;left:0;right:0;bottom:0;
+    position:fixed;top:64px;left:0;right:0;
     background:rgba(8,8,8,.98);backdrop-filter:blur(20px);
-    z-index:150;padding:8px 0 40px;overflow-y:auto;
-    border-top:1px solid var(--border)
+    z-index:150;
+    border-bottom:2px solid var(--border);
+    box-shadow:0 8px 32px rgba(0,0,0,.6)
   }
   .nav-links.open{display:flex}
   .nav-links a{
