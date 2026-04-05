@@ -84,10 +84,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;al
 
 /* ── ABOUT STRIP ── */
 #about-strip{background:var(--dark)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about-img{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3}
-.about-img img{width:100%;height:100%;object-fit:cover;display:block}
-.about-img::before{content:'';position:absolute;inset:0;border:1px solid var(--border);z-index:1;pointer-events:none;border-radius:var(--radius)}
+.about-grid{display:block}
 .red-rule{width:48px;height:3px;background:var(--red);margin-bottom:24px}
 .about-text p{color:var(--light);font-size:16px;line-height:1.8;margin-bottom:16px;font-weight:300}
 
@@ -134,7 +131,6 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 /* Tablet (≤900px) */
 @media(max-width:900px){
   .products-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr;gap:40px}
   .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   /* Products page */
@@ -257,9 +253,6 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 <section class="section" id="about-strip">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-img reveal">
-        <img src="/images/logistics.jpg" alt="Industrial operations">
-      </div>
       <div class="about-text reveal">
         <div class="section-label">Who We Are</div>
         <div class="red-rule"></div>
