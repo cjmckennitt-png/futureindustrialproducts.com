@@ -66,7 +66,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;al
 .industries-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
 .industry-card{background:var(--surface);overflow:hidden;text-align:center;transition:background .2s;position:relative}
 .industry-card:hover{background:var(--surface2)}
-.ind-img-wrap{position:relative;width:100%;height:200px;overflow:hidden}
+.ind-img-wrap{position:relative;width:100%;min-height:200px;overflow:hidden}
 .ind-img-wrap img{
   width:100%;height:100%;object-fit:cover;display:block;
   -webkit-mask-image:radial-gradient(ellipse 95% 90% at center,black 25%,transparent 72%);
@@ -145,6 +145,8 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   .prod-img-panel{min-height:260px;padding:40px 24px}
   .prod-content{padding:40px 24px!important}
   .why-grid{grid-template-columns:1fr}
+  /* About page two-col layout */
+  .two-col{grid-template-columns:1fr;gap:40px}
   /* Home: hero buttons stack */
   .hero-btns{flex-direction:column;align-items:flex-start}
   /* Footer */

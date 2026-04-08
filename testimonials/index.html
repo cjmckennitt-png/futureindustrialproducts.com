@@ -76,7 +76,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;al
 .industries-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
 .ind-card{background:var(--surface);overflow:hidden;text-align:center;transition:background .2s;position:relative}
 .ind-card:hover{background:var(--surface2)}
-.ind-img-wrap{position:relative;width:100%;height:200px;overflow:hidden}
+.ind-img-wrap{position:relative;width:100%;min-height:200px;overflow:hidden}
 .ind-img-wrap img{
   width:100%;height:100%;object-fit:cover;display:block;
   -webkit-mask-image:radial-gradient(ellipse 95% 90% at center,black 25%,transparent 72%);
@@ -154,6 +154,9 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   .nav-cta:hover,.nav-cta:active{background:var(--red-bright)!important}
   /* Inner page headers */
   .page-header{padding-top:88px!important;padding-bottom:48px!important}
+  /* Testimonials page featured quote */
+  .featured-quote{padding:24px 20px}
+  .featured-quote .q-mark{top:16px;left:20px;font-size:48px}
   /* Products page rows */
   .prod-img-panel{min-height:260px;padding:40px 24px}
   .prod-content{padding:40px 24px!important}
@@ -172,7 +175,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
     width:100%;justify-content:center;padding:18px 24px
   }
   .hero-btns{flex-direction:column;width:100%}
-  .stats-inner{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:1fr}
   .stat-item .num{font-size:30px}
   .prod-name{font-size:38px!important}
   .pods-badge{flex-direction:column;gap:4px;text-align:center}
