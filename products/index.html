@@ -23,8 +23,8 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--black:#080808;--dark:#111111;--surface:#1a1a1a;--border:#2e2e2e;--grey:#888;--light:#cccccc;--white:#f5f5f5;--red:#cc1111;--red-bright:#e01414;--teal:#0fa89a;--teal-bright:#12c4b4;--radius:4px}
-html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);overflow:visible}
 .nav-logo img{height:180px;width:auto;display:block;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:4px}
@@ -116,7 +116,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 }
 
 /* Mobile (≤768px) — nav + layout */
-@media(max-width:768px){
+@media(max-width:1024px){
   /* Nav */
   nav{height:64px;padding:0 18px}
   .nav-logo img{height:52px}

@@ -35,8 +35,8 @@
   --red-bright:#e01414;
   --radius:4px;
 }
-html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);overflow:visible}
@@ -141,7 +141,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 }
 
 /* Mobile (≤768px) — nav + layout */
-@media(max-width:768px){
+@media(max-width:1024px){
   /* Nav */
   nav{height:64px;padding:0 18px}
   .nav-logo img{height:52px}
