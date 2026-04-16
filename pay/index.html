@@ -25,10 +25,10 @@
 :root{--black:#080808;--dark:#111111;--surface:#1a1a1a;--surface2:#222222;--border:#2e2e2e;--grey:#888;--light:#cccccc;--white:#f5f5f5;--red:#cc1111;--red-bright:#e01414;--radius:4px}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:200px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);overflow:visible}
-.nav-logo img{height:180px;width:auto;display:block;object-fit:contain}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,48px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);overflow:visible}
+.nav-logo img{height:48px;width:auto;display:block;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{color:var(--light);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:var(--radius);transition:color .2s}
+.nav-links a{color:var(--light);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:8px 11px;border-radius:var(--radius);transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
 .nav-cta{background:var(--red)!important;color:var(--white)!important;padding:10px 22px!important;margin-left:8px}
 .nav-cta:hover{background:var(--red-bright)!important}
@@ -121,7 +121,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   .prod-content{padding:40px 24px!important}
   .why-grid{grid-template-columns:1fr}
   /* Home: hero buttons stack */
-  .hero-btns{flex-direction:column;align-items:flex-start}
+  .hero-btns{flex-direction:column;align-items:center}
   /* Footer */
   .footer-grid{grid-template-columns:1fr;gap:24px}
   .footer-bottom{flex-direction:column;gap:8px;text-align:center}
