@@ -38,14 +38,15 @@
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,48px);background:rgba(8,8,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);overflow:visible}
-.nav-logo img{height:62px;width:auto;display:block;object-fit:contain}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{color:var(--light);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:8px 11px;border-radius:var(--radius);transition:color .2s}
+/* ── NAV — matching Universal Solutions specs ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:150px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,80px);background:rgba(8,8,8,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:140px;width:auto;object-fit:contain}
+.nav-links{display:flex;gap:0;align-items:center}
+.nav-links a{color:var(--light);text-decoration:none;font-size:13px;font-weight:500;padding:8px 18px;letter-spacing:.5px;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
-.nav-cta{background:var(--red)!important;color:var(--white)!important;padding:10px 22px!important;margin-left:8px}
-.nav-cta:hover{background:var(--red-bright)!important}
+.nav-links a.nav-cta{background:var(--red);color:var(--white);padding:9px 24px;font-weight:600;margin-left:12px;letter-spacing:.3px;text-transform:none;font-size:14px}
+.nav-links a.nav-cta:hover{background:var(--red-bright)}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .25s}
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -53,7 +54,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;ali
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ── HERO ── */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:68px}
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:150px}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,.88) 40%,rgba(8,8,8,.5) 100%)}
@@ -124,31 +125,20 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 .footer-col a:hover{color:var(--red)}
 .footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:var(--grey)}
 
-/* ─────────────────────────────────────────
-   RESPONSIVE — consolidated, mobile-first
-───────────────────────────────────────── */
-
-/* Tablet (≤900px) */
+/* ── RESPONSIVE ── */
 @media(max-width:900px){
   .products-grid{grid-template-columns:1fr}
   .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
-  /* Products page */
-  .product-row{grid-template-columns:1fr;min-height:auto}
-  .product-row.reverse{direction:ltr}
-  .prod-img-panel{padding:48px 32px;min-height:300px}
-  .why-grid{grid-template-columns:1fr 1fr}
 }
 
-/* Mobile (≤768px) — nav + layout */
-@media(max-width:1024px){
-  /* Nav */
-  nav{height:64px;padding:0 18px}
-  .nav-logo img{height:52px}
+@media(max-width:768px){
+  nav{height:72px;padding:0 20px}
+  .nav-logo img{height:56px}
   .nav-toggle{display:flex;padding:10px;margin-right:-10px}
   .nav-links{
     display:none;flex-direction:column;gap:0;
-    position:fixed;top:64px;left:0;right:0;
+    position:fixed;top:72px;left:0;right:0;
     background:rgba(8,8,8,.99);
     z-index:9999;
     border-bottom:2px solid var(--border);
@@ -162,7 +152,6 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
     min-height:60px;display:flex;align-items:center;
     color:var(--light);text-decoration:none
   }
-  .nav-links a:active{background:rgba(255,255,255,.05)}
   .nav-links a.active{color:var(--red)}
   .nav-cta{
     background:var(--red)!important;color:var(--white)!important;
@@ -171,40 +160,24 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
     font-size:17px!important;font-weight:700!important;
     justify-content:flex-start!important
   }
-  .nav-cta:hover,.nav-cta:active{background:var(--red-bright)!important}
-  /* Inner page headers */
-  .page-header{padding-top:88px!important;padding-bottom:48px!important}
-  /* Products page rows */
-  .prod-img-panel{min-height:260px;padding:40px 24px}
-  .prod-content{padding:40px 24px!important}
-  .why-grid{grid-template-columns:1fr}
-  /* Home: hero buttons stack */
+  .nav-cta:hover{background:var(--red-bright)!important}
+  #hero{padding-top:72px}
   .hero-btns{flex-direction:column;align-items:center}
-  /* Footer */
   .footer-grid{grid-template-columns:1fr;gap:24px}
   .footer-bottom{flex-direction:column;gap:8px;text-align:center}
 }
 
-/* Small phones (≤480px) */
 @media(max-width:480px){
-  .page-h1,.hero-h1{font-size:clamp(28px,9vw,42px)}
-  .btn-primary,.btn-outline,.btn-red,.btn-teal,.btn-white,.btn-dark{
-    width:100%;justify-content:center;padding:18px 24px
-  }
+  .hero-h1{font-size:clamp(28px,9vw,42px)}
+  .btn-primary,.btn-outline,.btn-dark{width:100%;justify-content:center;padding:18px 24px}
   .hero-btns{flex-direction:column;width:100%}
   .stats-inner{grid-template-columns:1fr 1fr}
-  .stat-item .num{font-size:30px}
-  .prod-name{font-size:38px!important}
-  .pods-badge{flex-direction:column;gap:4px;text-align:center}
-  .section-h2{font-size:clamp(24px,7vw,36px)}
   .product-card{padding:32px 24px}
-  .footer-brand img:first-child{height:56px}
 }
 
-/* Reveal animation */
+/* Reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
-
 </style>
 </head>
 <body>
@@ -216,6 +189,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
     <a href="/about/">About</a>
     <a href="/products/">Products</a>
     <a href="/testimonials/">Testimonials</a>
+    <a href="/sds/">Safety Data</a>
     <a href="/pay/" class="nav-cta">Pay Invoice</a>
   </div>
   <button class="nav-toggle" aria-label="Toggle menu">
@@ -324,14 +298,15 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
       <h4>Company</h4>
       <a href="/about/">About Us</a>
       <a href="/testimonials/">Testimonials</a>
+      <a href="/sds/">Safety Data</a>
       <a href="/pay/">Pay Invoice</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <a>4443 Lyons Rd, Suite 209</a>
-      <a>Coconut Creek, FL 33073</a>
-      <span>(866) 929-1855</span>
-      <a>Mon–Fri 8:30am–4pm EST</a>
+      <p style="color:var(--grey);font-size:14px;margin-bottom:6px">4443 Lyons Rd, Suite 209</p>
+      <p style="color:var(--grey);font-size:14px;margin-bottom:6px">Coconut Creek, FL 33073</p>
+      <p style="color:var(--grey);font-size:14px;margin-bottom:6px">(866) 929-1855</p>
+      <p style="color:var(--grey);font-size:14px">Mon–Fri 8:30am–4pm EST</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -347,32 +322,14 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 <script>
-// Nav toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
-function closeNav(){
-  navLinks.classList.remove('open');
-  navToggle.classList.remove('open');
-  document.body.style.overflow='';
-}
-function openNav(){
-  navLinks.classList.add('open');
-  navToggle.classList.add('open');
-  document.body.style.overflow='hidden';
-}
+function closeNav(){navLinks.classList.remove('open');navToggle.classList.remove('open');document.body.style.overflow=''}
+function openNav(){navLinks.classList.add('open');navToggle.classList.add('open');document.body.style.overflow='hidden'}
 if(navToggle && navLinks){
-  navToggle.addEventListener('click', function(e){
-    e.stopPropagation();
-    navLinks.classList.contains('open') ? closeNav() : openNav();
-  });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeNav);
-  });
-  document.addEventListener('click', e => {
-    if(!navToggle.contains(e.target) && !navLinks.contains(e.target)){
-      closeNav();
-    }
-  });
+  navToggle.addEventListener('click',function(e){e.stopPropagation();navLinks.classList.contains('open')?closeNav():openNav()});
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+  document.addEventListener('click',e=>{if(!navToggle.contains(e.target)&&!navLinks.contains(e.target))closeNav()});
 }
 </script>
 </body>
