@@ -120,7 +120,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   .why-grid{grid-template-columns:1fr 1fr}
 }
 
-/* Mobile (≤768px) — nav + layout */
+/* Mobile (≤1024px) — nav + layout */
 @media(max-width:1024px){
   /* Nav */
   nav{height:64px;padding:0 18px}
@@ -154,15 +154,15 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
   .nav-cta:hover,.nav-cta:active{background:var(--red-bright)!important}
   /* Inner page headers */
   .page-header{padding-top:88px!important;padding-bottom:48px!important}
-  /* Testimonials page featured quote */
-  .featured-quote{padding:24px 20px}
+  /* Testimonials grid — single column */
+  .testimonials-grid{grid-template-columns:1fr!important}
+  /* Featured quote */
+  .featured-quote{padding:28px 24px}
   .featured-quote .q-mark{top:16px;left:20px;font-size:48px}
-  /* Products page rows */
-  .prod-img-panel{min-height:260px;padding:40px 24px}
-  .prod-content{padding:40px 24px!important}
-  .why-grid{grid-template-columns:1fr}
-  /* Home: hero buttons stack */
-  .hero-btns{flex-direction:column;align-items:center}
+  /* Stats strip — 2 columns */
+  .stats-strip .stats-inner{grid-template-columns:repeat(2,1fr)!important;gap:24px}
+  /* Industries */
+  .industries-row{grid-template-columns:1fr!important}
   /* Footer */
   .footer-grid{grid-template-columns:1fr;gap:24px}
   .footer-bottom{flex-direction:column;gap:8px;text-align:center}
@@ -170,17 +170,12 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 
 /* Small phones (≤480px) */
 @media(max-width:480px){
-  .page-h1,.hero-h1{font-size:clamp(28px,9vw,42px)}
-  .btn-primary,.btn-outline,.btn-red,.btn-teal,.btn-white,.btn-dark{
-    width:100%;justify-content:center;padding:18px 24px
-  }
-  .hero-btns{flex-direction:column;width:100%}
-  .stats-inner{grid-template-columns:1fr}
-  .stat-item .num{font-size:30px}
-  .prod-name{font-size:38px!important}
-  .pods-badge{flex-direction:column;gap:4px;text-align:center}
+  .page-h1{font-size:clamp(28px,9vw,42px)}
+  .btn-primary{width:100%;justify-content:center;padding:18px 24px}
   .section-h2{font-size:clamp(24px,7vw,36px)}
-  .product-card{padding:32px 24px}
+  .featured-quote blockquote{font-size:16px}
+  /* Stats strip — single column on small phones */
+  .stats-strip .stats-inner{grid-template-columns:1fr!important}
   .footer-brand img:first-child{height:56px}
 }
 
