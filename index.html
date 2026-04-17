@@ -314,6 +314,11 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 </footer>
 
 <script>
+// Disable browser scroll restoration so page always loads at top
+if(history.scrollRestoration){history.scrollRestoration='manual'}
+window.scrollTo(0,0);
+</script>
+<script>
 const obs = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
 }),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
