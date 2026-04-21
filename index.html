@@ -178,6 +178,26 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(
 /* Reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
+
+/* ── CROSS-BROWSER / PC RENDERING SAFETY NETS ──
+   Windows renders fonts slightly wider than macOS. These rules prevent text
+   from overflowing containers (and getting clipped by overflow:hidden) on PC. */
+.hero-h1,.hero-sub,.section-h2,.section-sub,.product-card h3,.product-card p,#cta-band h2,#cta-band p,.testimonial-strip-inner blockquote,.testimonial-strip-inner cite,.stat-item .num,.stat-item .lbl,.footer-col h4,.footer-col a,.footer-col p,.footer-brand p{overflow-wrap:break-word;word-wrap:break-word}
+.hero-h1{hyphens:auto;-webkit-hyphens:auto}
+.stats-inner{grid-template-columns:repeat(4,minmax(0,1fr))}
+.stat-item{min-width:0}
+.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.product-card{min-width:0}
+.footer-grid{grid-template-columns:1.5fr minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)}
+.footer-col{min-width:0}
+.nav-links{min-width:0}
+@media(max-width:900px){
+  .stats-inner{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:minmax(0,1fr)}
+}
 </style>
 </head>
 <body>
